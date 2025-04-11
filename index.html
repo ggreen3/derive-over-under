@@ -5,126 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digits Over/Under Trading Bot</title>
   <style>
-    /* CSS remains unchanged */
+    /* CSS Styling */
     body {
-  font-family: 'Arial', sans-serif;
-  background: #121212;
-  color: #f4f4f4;
-  padding: 20px;
-  margin: 0;
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-  background: #1e1e1e;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-h2 {
-  color: #00bcd4;
-  text-align: center;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.stats div {
-  background: #2a2a2a;
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-}
-
-.stats div span {
-  font-size: 24px;
-  font-weight: bold;
-  display: block;
-  margin-top: 5px;
-}
-
-#wins { color: #4caf50; }
-#losses { color: #f44336; }
-#winRate { color: #00bcd4; }
-#balance { color: #ffc107; }
-
-.log {
-  background: #333;
-  padding: 15px;
-  border-radius: 5px;
-  height: 400px;
-  overflow-y: auto;
-  font-family: monospace;
-  margin-top: 20px;
-}
-
-.log p {
-  margin: 5px 0;
-  padding: 5px;
-  border-bottom: 1px solid #444;
-}
-
-.log .win { color: #4caf50; }
-.log .loss { color: #f44336; }
-.log .info { color: #00bcd4; }
-
-button {
-  background: #00bcd4;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px;
-}
-
-button:hover { opacity: 0.9; }
-
-#stopBtn { background: #f44336; }
-
-input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin: 10px;
-  background: #2a2a2a;
-  color: #fff;
-  border: 1px solid #444;
-  border-radius: 5px;
-}
-
-.market-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  margin: 15px 0;
-}
-
-.market-card {
-  background: #2a2a2a;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.progress-container {
-  width: 100%;
-  background-color: #333;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-.progress-bar {
-  height: 20px;
-  background-color: #4CAF50;
-  border-radius: 5px;
-  width: 0%;
-  transition: width 0.3s;
-}
+      font-family: 'Arial', sans-serif;
+      background: #121212;
+      color: #f4f4f4;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      background: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+      color: #00bcd4;
+      text-align: center;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .stats div {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .stats div span {
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+      margin-top: 5px;
+    }
+    #wins { color: #4caf50; }
+    #losses { color: #f44336; }
+    #winRate { color: #00bcd4; }
+    #balance { color: #ffc107; }
+    #stake { color: #ff9800; }
+    #fauxWinRate { color: #e91e63; }
+    #tradeCycle { color: #9c27b0; }
+    .log {
+      background: #333;
+      padding: 15px;
+      border-radius: 5px;
+      height: 400px;
+      overflow-y: auto;
+      font-family: monospace;
+      margin-top: 20px;
+    }
+    .log p {
+      margin: 5px 0;
+      padding: 5px;
+      border-bottom: 1px solid #444;
+    }
+    .log .win { color: #4caf50; }
+    .log .loss { color: #f44336; }
+    .log .info { color: #00bcd4; }
+    button {
+      background: #00bcd4;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    button:hover { opacity: 0.9; }
+    #stopBtn { background: #f44336; }
+    input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 10px;
+      background: #2a2a2a;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 5px;
+    }
+    .market-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+    .market-card {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .progress-container {
+      width: 100%;
+      background-color: #333;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    .progress-bar {
+      height: 20px;
+      background-color: #4CAF50;
+      border-radius: 5px;
+      width: 0%;
+      transition: width 0.3s;
+    }
   </style>
 </head>
 <body>
@@ -139,7 +125,7 @@ input {
       <div>Losses: <span id="losses">0</span></div>
       <div>Win Rate: <span id="winRate">0.00%</span></div>
       <div>Balance: <span id="balance">$0.00</span></div>
-      <div>Current Stake: <span id="stake">$0.00</span></div>
+      <div>Stake: <span id="stake">$0.00</span></div>
       <div>Faux Win Rate: <span id="fauxWinRate">0.00%</span></div>
       <div>Trade Cycle: <span id="tradeCycle">0/12</span></div>
     </div>
@@ -163,7 +149,10 @@ input {
     <!-- Log Section -->
     <div class="log" id="log"></div>
   </div>
+
+  <!-- JavaScript Logic -->
   <script>
+    // High-Precision Technical Analysis Class
     class HighPrecisionTechnicalAnalysis {
       constructor() {
         this.prices = [];
@@ -181,7 +170,6 @@ input {
         // Update price history
         this.prices.push(price);
         if (this.prices.length > 200) this.prices.shift();
-
         // Update highs and lows
         const period = 20;
         if (this.prices.length >= period) {
@@ -190,7 +178,6 @@ input {
           this.lows.push(Math.min(...slice));
           if (this.highs.length > period) this.highs.shift();
           if (this.lows.length > period) this.lows.shift();
-
           // Calculate price velocity and acceleration
           if (this.prices.length >= 2) {
             this.lastVelocity = this.velocity;
@@ -225,6 +212,7 @@ input {
       }
     }
 
+    // Ultra Precision Trading Bot Class
     class UltraPrecisionTradingBot {
       constructor() {
         this.ws = null;
@@ -269,11 +257,14 @@ input {
         document.getElementById("winRate").textContent = `${winRate}%`;
         document.getElementById("balance").textContent = `$${this.accountBalance.toFixed(2)}`;
         document.getElementById("stake").textContent = `$${this.currentStake.toFixed(2)}`;
+        document.getElementById("tradeCycle").textContent = `${this.totalTrades}/12`;
+        const progressPercent = (this.totalTrades / 12) * 100;
+        document.getElementById("cycleProgress").style.width = `${progressPercent}%`;
       }
 
       startBot() {
         if (this.isRunning) return;
-        const apiKey = document.getElementById("apiKey").value;
+        const apiKey = document.getElementById("apiKey").value.trim();
         if (!apiKey) {
           this.log("Please enter an API key", "loss");
           return;
@@ -531,6 +522,7 @@ input {
       }
     }
 
+    // Initialize the bot
     document.addEventListener('DOMContentLoaded', () => {
       const bot = new UltraPrecisionTradingBot();
       document.getElementById("startBtn").addEventListener("click", () => {
