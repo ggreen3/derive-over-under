@@ -196,7 +196,7 @@
     class UltraPrecisionTradingBot {
       constructor() {
         this.ws = null;
-        this.markets = ["RDBEAR", "RDDEER"];
+        this.markets = ["R_10", "R_25", "R_50", "R_75", "R_100"];
         this.analysis = {};
         this.markets.forEach(market => {
           this.analysis[market] = new HighPrecisionTechnicalAnalysis();
